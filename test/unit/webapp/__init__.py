@@ -1,6 +1,7 @@
 import pytest
 from restApp import app
 
+
 @pytest.fixture
 def client():
     """Configures the app for testing
