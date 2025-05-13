@@ -79,3 +79,6 @@ docker run --name "restapp" --add-host "redis:$redisIP" -p "5000:5000" -d restap
 python -m pytest test/integration -v
 
  -->
+
+
+ <!-- deploy yo Prod -->
