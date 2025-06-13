@@ -94,7 +94,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run Integration Tests
-        run: pytest test/integration
+        run: bash ./utils/postmanNeuman_commands.sh
 
 
   ## 🚀 4. 
@@ -129,4 +129,4 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run Integration Tests
-        run: pytest test/integration
+        run: bash ./utils/postmanNeuman_commands.sh
