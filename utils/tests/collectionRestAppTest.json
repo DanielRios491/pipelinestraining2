@@ -12,10 +12,10 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:5000/",
+          "raw": "http://restapp:5000/",
           "protocol": "http",
           "host": [
-            "localhost"
+            "restapp"
           ],
           "port": "5000",
           "path": [
