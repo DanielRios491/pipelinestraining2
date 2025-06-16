@@ -10,5 +10,5 @@ restappIp=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{
 docker run --rm \
     --add-host "restapp:$restappIp" \
     -v "$(pwd)/utils/tests:/etc/newman" \
-    postman/newman run "/etc/newman/collectionRestAppTest.json" #\
+    postman/newman run "/etc/newman/collectionRestAppTest.json" \
     --environment "/etc/newman/env.json"
