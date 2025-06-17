@@ -12,15 +12,9 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://restapp:5000/",
-          "protocol": "http",
-          "host": [
-            "restapp"
-          ],
-          "port": "5000",
-          "path": [
-            ""
-          ]
+          "raw": "{{base_url}}/",
+          "host": ["{{base_url}}"],
+          "path": [""]
         }
       },
       "response": [],
