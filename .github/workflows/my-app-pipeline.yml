@@ -101,7 +101,7 @@ jobs:
         run: bash ./utils/postmanNeuman_commands.sh dev
 
       - name: Run Performance Tests
-        run: docker run --network host -v "$(pwd)/tests/performance:/app" -w /app artilleryio/artillery run test.yml
+        run: docker run --network host -v "$(pwd)/test/performance:/app" -w /app artilleryio/artillery run test.yml
 
   ## 🚀 4. 
   deploy-prod:
