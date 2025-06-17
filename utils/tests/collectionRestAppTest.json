@@ -15,7 +15,7 @@
           "raw": "http://restapp:5000/",
           "protocol": "http",
           "host": [
-            "restapp-dev"
+            "restapp"
           ],
           "port": "5000",
           "path": [
