@@ -37,8 +37,11 @@ jobs:
       - name: Static Code Analysis
         run: flake8 . --exclude=venv,__pycache__ --max-line-length=100
 
-      - name: test
+      - name: Run Unit Tests
         run: python -m pytest test/unit -v
+
+      - name: Run Performance Tests
+        run: docker run --network host -v "$(pwd):/app" -w /app artilleryio/artillery run test.yml
 
   ## 🔧 2. 
   build:
