@@ -12,7 +12,7 @@ on:
 
 env: 
   SEM_VERSION: ${{github.run_id}}
-  IMAGE_NAME:  "restapp"
+  IMAGE_NAME:  "restapp-dev"
   TAG: "1.0.${{ github.run_id }}"
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
 
@@ -118,7 +118,7 @@ jobs:
         run: echo "REDIS_IP=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redisService-prod)" >> $GITHUB_ENV
 
       - name: Deploy REST App
-        run: docker run -d --name restapp-prod --add-host redis:$REDIS_IP -p 5001:5000 ${{ secrets.DOCKER_USERNAME }}/restapp:${{ env.TAG }}
+        run: docker run -d --name restapp-prod --add-host redis:$REDIS_IP -p 5001:5000 ${{ secrets.DOCKER_USERNAME }}/restapp-prod:${{ env.TAG }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
