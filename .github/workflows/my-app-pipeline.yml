@@ -80,7 +80,7 @@ jobs:
 
       - name: Get Redis IP
         id: redisip
-        run: echo "REDIS_IP=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redisService)" >> $GITHUB_ENV
+        run: echo "REDIS_IP=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redisService-dev)" >> $GITHUB_ENV
 
       - name: Deploy REST App
         run: docker run -d --name restapp-dev --add-host redis:$REDIS_IP -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:${{ env.TAG }}
@@ -115,7 +115,7 @@ jobs:
 
       - name: Get Redis IP
         id: redisip
-        run: echo "REDIS_IP=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redisService)" >> $GITHUB_ENV
+        run: echo "REDIS_IP=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redisService-prod)" >> $GITHUB_ENV
 
       - name: Deploy REST App
         run: docker run -d --name restapp-prod --add-host redis:$REDIS_IP -p 5001:5000 ${{ secrets.DOCKER_USERNAME }}/restapp:${{ env.TAG }}
