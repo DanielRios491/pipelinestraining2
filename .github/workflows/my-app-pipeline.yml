@@ -72,7 +72,7 @@ jobs:
       name: Develop
     needs: build
     runs-on: self-hosted
-    if: github.ref == 'refs/heads/danielRios_p2_dev'
+    if: github.ref == 'refs/heads/danielRios_p2_base'
     steps:
       - name: Cleanup old containers
         run: |
