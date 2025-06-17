@@ -125,4 +125,4 @@ jobs:
         run: docker run -d --name restapp-prod --add-host redis:$REDIS_IP -p 5001:5000 ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:${{ env.TAG }}
 
       - name: Run Integration Tests
-        run: bash ./utils/postmanNeuman_commands.sh
+        run: bash ./utils/postmanNeuman_commands.sh prod
