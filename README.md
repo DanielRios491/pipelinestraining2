@@ -80,4 +80,4 @@ python -m pytest test/integration -v
 
  -->
 
- <!-- this is for deploy in development environment -->
+ <!-- this is for deploy in dev -->
