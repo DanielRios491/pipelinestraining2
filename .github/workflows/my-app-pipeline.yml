@@ -72,18 +72,18 @@ jobs:
     steps:
       - name: Cleanup old containers
         run: |
-          docker rm -f redisService || true
-          docker rm -f restapp || true
+          docker rm -f redisService-dev || true
+          docker rm -f restapp-dev || true
 
       - name: Deploy Redis
-        run: docker run -d --name redisService redis:alpine
+        run: docker run -d --name redisService-dev redis:alpine
 
       - name: Get Redis IP
         id: redisip
         run: echo "REDIS_IP=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redisService)" >> $GITHUB_ENV
 
       - name: Deploy REST App
-        run: docker run -d --name restapp --add-host redis:$REDIS_IP -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:${{ env.TAG }}
+        run: docker run -d --name restapp-dev --add-host redis:$REDIS_IP -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/$IMAGE_NAME:${{ env.TAG }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -107,18 +107,18 @@ jobs:
     steps:
       - name: Cleanup old containers
         run: |
-          docker rm -f redisService || true
-          docker rm -f restapp || true
+          docker rm -f redisService-prod || true
+          docker rm -f restapp-prod || true
 
       - name: Deploy Redis
-        run: docker run -d --name redisService redis:alpine
+        run: docker run -d --name redisService-prod redis:alpine
 
       - name: Get Redis IP
         id: redisip
         run: echo "REDIS_IP=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' redisService)" >> $GITHUB_ENV
 
       - name: Deploy REST App
-        run: docker run -d --name restapp --add-host redis:$REDIS_IP -p 5000:5000 ${{ secrets.DOCKER_USERNAME }}/restapp:${{ env.TAG }}
+        run: docker run -d --name restapp-prod --add-host redis:$REDIS_IP -p 5001:5000 ${{ secrets.DOCKER_USERNAME }}/restapp:${{ env.TAG }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
