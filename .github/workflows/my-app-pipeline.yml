@@ -41,7 +41,7 @@ jobs:
         run: python -m pytest test/unit -v
 
       - name: Run Performance Tests
-        run: docker run --network host -v "$(pwd):/app" -w /app artilleryio/artillery run test.yml
+        run: docker run --network host -v "$(pwd)/tests/performance:/app" -w /app artilleryio/artillery run test.yml
 
   ## 🔧 2. 
   build:
