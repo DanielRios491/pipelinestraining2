@@ -109,7 +109,7 @@ jobs:
       name: Production
     needs: build
     runs-on: self-hosted
-    if: github.ref == 'refs/heads/danielRios_p2_base'
+    if: github.ref == 'refs/heads/danielRios_p2_dev'
     steps:
       - name: Cleanup old containers
         run: |
